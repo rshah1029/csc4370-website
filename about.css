@@ -68,24 +68,40 @@ h2 {
     font-family: Georgia;           /* serif typeface */
     font-size: 26px;                /* section heading size */
     color: #2e1b57;                 /* deep purple */
-    margin-left: 30px;              /* space on the left */
-    margin-right: 30px;             /* space on the right */
+    margin-top: 20px;               /* space above the heading */
 }
 
 
-/* ---------- NAVIGATION ---------- */
+/* ---------- PAGE LAYOUT (Flexbox) ----------
+   The menu and the content sit side by side in two columns.
+   #layout is the flex container while #navigation and #content are its
+   two flex items. */
+
+#layout {
+    display: flex;                  /* lays the children out in a row */
+}
+
 #navigation {
+    flex: 0 0 200px;                /* fixed 200px column that does not grow or shrink */
     background-color: #efeafc;      /* pale lilac menu bar */
-    padding: 15px;                  /* space inside */
-    border-bottom: 2px solid #6d4bc2;  /* line under the menu */
+    padding: 20px;                  /* space inside */
+    border-right: 2px solid #6d4bc2;   /* line between the two columns */
 }
 
+#content {
+    flex: 1;                        /* takes up whatever width is left */
+    padding: 10px 25px 20px 25px;   /* space inside: top, right, bottom, left */
+}
+
+
+/* ---------- LINKS ---------- */
 a {
     font-family: Verdana;           /* sans serif typeface */
     font-size: 15px;                /* small */
     font-weight: bold;              /* bold links */
     color: #6d4bc2;                 /* mid purple */
     text-decoration: none;          /* no underline */
+    line-height: 2;                 /* space between the stacked links */
 }
 
 
@@ -97,8 +113,6 @@ a {
     font-size: 17px;                /* medium text */
     color: #1a1030;                 /* darkest purple */
     text-align: justify;            /* both edges line up */
-    margin-left: 30px;              /* space on the left */
-    margin-right: 30px;             /* space on the right */
 }
 
 .about-two {
@@ -110,8 +124,6 @@ a {
     background-color: #f3eefc;      /* palest lilac block */
     border: 2px solid #d9d0ee;      /* pale outline */
     padding: 14px;                  /* space inside */
-    margin-left: 30px;              /* space on the left */
-    margin-right: 30px;             /* space on the right */
 }
 
 .about-three {
@@ -122,8 +134,6 @@ a {
     border-top: 2px solid #d9d0ee;     /* line above */
     border-bottom: 2px solid #d9d0ee;  /* line below */
     padding: 14px;                  /* space inside */
-    margin-left: 30px;              /* space on the left */
-    margin-right: 30px;             /* space on the right */
 }
 
 
@@ -131,8 +141,6 @@ a {
 #social {
     background-color: #efeafc;      /* pale lilac block */
     padding: 15px;                  /* space inside */
-    margin-left: 30px;              /* space on the left */
-    margin-right: 30px;             /* space on the right */
     margin-bottom: 20px;            /* space below */
     border: 2px solid #6d4bc2;      /* purple outline */
 }
