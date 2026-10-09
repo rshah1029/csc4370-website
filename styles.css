@@ -1,12 +1,96 @@
 /* external style sheet shared by the home, consoles and controllers pages */
 
 
+/* ---------- COLOUR THEMES ----------
+   Light theme below, dark theme in .dark_mode. theme.js switches
+   between them. */
+
+:root {
+    /* page and panel */
+    --page-bg: #1a1030;             /* behind the page */
+    --panel-bg: #ffffff;            /* the page itself */
+    --panel-border: #6d4bc2;        /* outline around the page */
+    --body-text: #222222;           /* default text */
+
+    /* banner and menu */
+    --banner-bg: #2e1b57;           /* banner background */
+    --banner-text: #ffffff;         /* banner lettering */
+    --tagline-text: #c9b6f0;        /* slogan under the title */
+    --heading: #2e1b57;             /* section headings */
+    --nav-bg: #efeafc;              /* menu bar background */
+    --link: #6d4bc2;                /* link colour */
+    --image-border: #2e1b57;        /* frame around pictures */
+
+    /* home page accents (purple) */
+    --home-text: #2e1b57;           /* first paragraph */
+    --home-alt-text: #6d4bc2;       /* second paragraph */
+    --home-block: #efeafc;          /* second paragraph block */
+    --home-pale-block: #faf8ff;     /* third paragraph block */
+    --home-outline: #c9b6f0;        /* third paragraph outline */
+
+    /* consoles page accents (orange) */
+    --orange-text: #8a3a08;         /* first and second paragraphs */
+    --orange-bright: #d97706;       /* lines and third paragraph */
+    --orange-block: #fdf3e7;        /* second paragraph block */
+
+    /* controllers page accents (teal) */
+    --teal-text: #106b6b;           /* all three paragraphs */
+    --teal-block: #eaf6f5;          /* second paragraph block */
+
+    /* table */
+    --table-head-bg: #2e1b57;       /* heading row */
+    --table-head-text: #ffffff;     /* heading lettering */
+    --table-cell-bg: #faf8ff;       /* data cells */
+    --table-grid: #d9d0ee;          /* grid lines */
+}
+
+/* The alternate theme. Same variable names, darker values. */
+.dark_mode {
+    /* page and panel */
+    --page-bg: #05030a;             /* behind the page */
+    --panel-bg: #171324;            /* the page itself */
+    --panel-border: #8b6fd4;        /* outline around the page */
+    --body-text: #e6e1f0;           /* default text */
+
+    /* banner and menu */
+    --banner-bg: #241a3d;           /* banner background */
+    --banner-text: #f4f1fb;         /* banner lettering */
+    --tagline-text: #b9a6e8;        /* slogan under the title */
+    --heading: #c3b0f0;             /* section headings */
+    --nav-bg: #211c33;              /* menu bar background */
+    --link: #b49bf0;                /* link colour */
+    --image-border: #8b6fd4;        /* frame around pictures */
+
+    /* home page accents (purple) */
+    --home-text: #d3c6f2;           /* first paragraph */
+    --home-alt-text: #b49bf0;       /* second paragraph */
+    --home-block: #221c36;          /* second paragraph block */
+    --home-pale-block: #1d182e;     /* third paragraph block */
+    --home-outline: #5b4a8a;        /* third paragraph outline */
+
+    /* consoles page accents (orange) */
+    --orange-text: #f0a868;         /* first and second paragraphs */
+    --orange-bright: #e8913f;       /* lines and third paragraph */
+    --orange-block: #2a1f16;        /* second paragraph block */
+
+    /* controllers page accents (teal) */
+    --teal-text: #68c9c0;           /* all three paragraphs */
+    --teal-block: #14272a;          /* second paragraph block */
+
+    /* table */
+    --table-head-bg: #332a52;       /* heading row */
+    --table-head-text: #f4f1fb;     /* heading lettering */
+    --table-cell-bg: #1d182e;       /* data cells */
+    --table-grid: #463a6b;          /* grid lines */
+}
+
+
 /* ---------- BODY ---------- */
 body {
-    background-color: #1a1030;      /* page background */
+    background-color: var(--page-bg);  /* page background */
     font-family: Arial;             /* default typeface */
     font-size: 16px;                /* default text size */
-    color: #222222;                 /* default text colour */
+    color: var(--body-text);        /* default text colour */
 }
 
 
@@ -14,16 +98,16 @@ body {
 #container {
     width: 900px;                   /* content width */
     margin: 0 auto;                 /* centres the box */
-    background-color: #ffffff;      /* white page */
+    background-color: var(--panel-bg);   /* page background */
     padding-bottom: 20px;           /* space at the bottom */
-    border: 2px solid #6d4bc2;      /* purple outline */
+    border: 2px solid var(--panel-border);  /* outline */
 }
 
 
 /* ---------- HEADER ---------- */
 #header {
-    background-color: #2e1b57;      /* purple banner */
-    color: #ffffff;                 /* white text */
+    background-color: var(--banner-bg);  /* banner background */
+    color: var(--banner-text);      /* banner lettering */
     padding: 25px;                  /* space inside */
     text-align: center;             /* centred */
 }
@@ -31,36 +115,49 @@ body {
 h1 {
     font-family: Georgia;           /* serif typeface */
     font-size: 38px;                /* largest heading */
-    color: #ffffff;                 /* white on the banner */
+    color: var(--banner-text);      /* lettering on the banner */
 }
 
 #tagline {
     font-style: italic;             /* italic slogan */
     font-size: 17px;                /* small */
-    color: #c9b6f0;                 /* pale lilac */
+    color: var(--tagline-text);     /* slogan colour */
 }
 
 h2 {
     font-family: Georgia;           /* serif typeface */
     font-size: 26px;                /* section heading size */
-    color: #2e1b57;                 /* purple */
+    color: var(--heading);          /* heading colour */
     margin-left: 30px;              /* space on the left */
     margin-right: 30px;             /* space on the right */
 }
 
 
+/* ---------- THEME BUTTON ---------- */
+#theme_toggler {
+    font-family: Verdana;           /* sans serif typeface */
+    font-size: 13px;                /* small */
+    color: var(--banner-text);      /* matches the banner lettering */
+    background-color: transparent;  /* no fill */
+    border: 2px solid var(--banner-text);  /* outline only */
+    padding: 8px 14px;              /* space inside the button */
+    margin-top: 12px;               /* space above the button */
+    cursor: pointer;                /* arrow turns into a hand */
+}
+
+
 /* ---------- NAVIGATION ---------- */
 #navigation {
-    background-color: #efeafc;      /* lilac menu bar */
+    background-color: var(--nav-bg);  /* menu bar background */
     padding: 15px;                  /* space inside */
-    border-bottom: 2px solid #6d4bc2;  /* line under the menu */
+    border-bottom: 2px solid var(--panel-border);  /* line under the menu */
 }
 
 a {
     font-family: Verdana;           /* sans serif typeface */
     font-size: 15px;                /* small */
     font-weight: bold;              /* bold links */
-    color: #6d4bc2;                 /* purple */
+    color: var(--link);             /* link colour */
     text-decoration: none;          /* no underline */
 }
 
@@ -69,19 +166,19 @@ a {
 .page-image {
     margin-left: 30px;              /* space on the left */
     margin-top: 20px;               /* space above */
-    border: 3px solid #2e1b57;      /* purple frame */
+    border: 3px solid var(--image-border);  /* frame */
 }
 
 
 /* ---------- PARAGRAPH STYLES ----------
    Twelve styles, three per page. Each page uses its own accent colours:
-   home is purple, consoles is orange, controllers is teal, about is navy. */
+   home is purple, consoles is orange, controllers is teal. */
 
 /* --- Home page: purple --- */
 .home-one {
     font-family: Georgia;           /* serif typeface */
     font-size: 18px;                /* larger text */
-    color: #2e1b57;                 /* deep purple */
+    color: var(--home-text);        /* paragraph colour */
     text-align: left;               /* left aligned */
     margin-left: 30px;              /* space on the left */
     margin-right: 30px;             /* space on the right */
@@ -91,10 +188,10 @@ a {
     font-family: Verdana;           /* sans serif typeface */
     font-size: 15px;                /* smaller text */
     font-style: italic;             /* italic */
-    color: #6d4bc2;                 /* mid purple */
+    color: var(--home-alt-text);    /* paragraph colour */
     text-align: justify;            /* both edges line up */
-    background-color: #efeafc;      /* pale lilac block */
-    border-bottom: 3px solid #6d4bc2;  /* purple line underneath */
+    background-color: var(--home-block);  /* block behind the text */
+    border-bottom: 3px solid var(--link);  /* line underneath */
     padding: 14px;                  /* space inside */
     margin-left: 30px;              /* space on the left */
     margin-right: 30px;             /* space on the right */
@@ -103,10 +200,10 @@ a {
 .home-three {
     font-family: Courier;           /* monospaced typeface */
     font-size: 15px;                /* smaller text */
-    color: #2e1b57;                 /* deep purple */
+    color: var(--home-text);        /* paragraph colour */
     text-align: center;             /* centred */
-    background-color: #faf8ff;      /* near white block */
-    border: 2px solid #c9b6f0;      /* light lilac outline */
+    background-color: var(--home-pale-block);  /* block behind the text */
+    border: 2px solid var(--home-outline);  /* outline */
     padding: 14px;                  /* space inside */
     margin-left: 30px;              /* space on the left */
     margin-right: 30px;             /* space on the right */
@@ -117,9 +214,9 @@ a {
 .consoles-one {
     font-family: Tahoma;            /* sans serif typeface */
     font-size: 17px;                /* larger text */
-    color: #8a3a08;                 /* burnt orange */
+    color: var(--orange-text);      /* paragraph colour */
     text-align: left;               /* left aligned */
-    border-bottom: 2px solid #d97706;  /* orange line underneath */
+    border-bottom: 2px solid var(--orange-bright);  /* line underneath */
     padding-bottom: 12px;           /* space above that line */
     margin-left: 30px;              /* space on the left */
     margin-right: 30px;             /* space on the right */
@@ -129,9 +226,9 @@ a {
     font-family: Georgia;           /* serif typeface */
     font-size: 16px;                /* medium text */
     font-style: italic;             /* italic */
-    color: #8a3a08;                 /* burnt orange */
+    color: var(--orange-text);      /* paragraph colour */
     text-align: justify;            /* both edges line up */
-    background-color: #fdf3e7;      /* cream block */
+    background-color: var(--orange-block);  /* block behind the text */
     padding: 14px;                  /* space inside */
     margin-left: 30px;              /* space on the left */
     margin-right: 30px;             /* space on the right */
@@ -141,10 +238,10 @@ a {
     font-family: Arial;             /* sans serif typeface */
     font-size: 15px;                /* smaller text */
     font-weight: bold;              /* bold */
-    color: #d97706;                 /* bright orange */
+    color: var(--orange-bright);    /* paragraph colour */
     text-align: center;             /* centred */
-    border-top: 2px solid #d97706;     /* orange line above */
-    border-bottom: 2px solid #d97706;  /* orange line below */
+    border-top: 2px solid var(--orange-bright);     /* line above */
+    border-bottom: 2px solid var(--orange-bright);  /* line below */
     padding: 14px;                  /* space inside */
     margin-left: 30px;              /* space on the left */
     margin-right: 30px;             /* space on the right */
@@ -155,7 +252,7 @@ a {
 .controllers-one {
     font-family: "Times New Roman";  /* serif typeface */
     font-size: 18px;                /* larger text */
-    color: #106b6b;                 /* teal */
+    color: var(--teal-text);        /* paragraph colour */
     text-align: justify;            /* both edges line up */
     margin-left: 30px;              /* space on the left */
     margin-right: 30px;             /* space on the right */
@@ -164,10 +261,10 @@ a {
 .controllers-two {
     font-family: Courier;           /* monospaced typeface */
     font-size: 15px;                /* smaller text */
-    color: #106b6b;                 /* teal */
+    color: var(--teal-text);        /* paragraph colour */
     text-align: left;               /* left aligned */
-    background-color: #eaf6f5;      /* pale teal block */
-    border: 2px solid #106b6b;      /* teal outline */
+    background-color: var(--teal-block);  /* block behind the text */
+    border: 2px solid var(--teal-text);   /* outline */
     padding: 14px;                  /* space inside */
     margin-left: 30px;              /* space on the left */
     margin-right: 30px;             /* space on the right */
@@ -177,9 +274,9 @@ a {
     font-family: Verdana;           /* sans serif typeface */
     font-size: 15px;                /* smaller text */
     font-weight: bold;              /* bold */
-    color: #106b6b;                 /* teal */
+    color: var(--teal-text);        /* paragraph colour */
     text-align: center;             /* centred */
-    border-bottom: 3px solid #106b6b;  /* teal line underneath */
+    border-bottom: 3px solid var(--teal-text);  /* line underneath */
     padding-bottom: 14px;           /* space above that line */
     margin-left: 30px;              /* space on the left */
     margin-right: 30px;             /* space on the right */
@@ -190,7 +287,7 @@ a {
 .fact-list {
     font-family: Verdana;           /* sans serif typeface */
     font-size: 15px;                /* small */
-    color: #222222;                 /* dark grey */
+    color: var(--body-text);        /* text colour */
     margin-left: 30px;              /* space on the left */
     margin-right: 30px;             /* space on the right */
 }
@@ -201,23 +298,22 @@ a {
     width: 830px;                   /* table width */
     margin-left: 30px;              /* space on the left */
     margin-bottom: 10px;            /* space below */
-    border: 2px solid #2e1b57;      /* purple outline */
+    border: 2px solid var(--table-head-bg);  /* outline */
     font-family: Arial;             /* sans serif typeface */
     font-size: 14px;                /* small, six columns */
 }
 
 th {
-    background-color: #2e1b57;      /* purple heading row */
-    color: #ffffff;                 /* white text */
+    background-color: var(--table-head-bg);  /* heading row */
+    color: var(--table-head-text);  /* heading lettering */
     text-align: left;               /* left aligned */
     padding: 10px;                  /* space inside */
-    border: 1px solid #2e1b57;      /* cell border */
+    border: 1px solid var(--table-head-bg);  /* cell border */
 }
 
 td {
-    background-color: #faf8ff;      /* pale cell */
-    color: #222222;                 /* dark grey text */
+    background-color: var(--table-cell-bg);  /* data cells */
+    color: var(--body-text);        /* text colour */
     padding: 8px;                   /* space inside */
-    border: 1px solid #d9d0ee;      /* grid lines */
+    border: 1px solid var(--table-grid);  /* grid lines */
 }
-

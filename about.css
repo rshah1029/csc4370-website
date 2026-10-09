@@ -6,6 +6,10 @@
    Purples, taken from the lilac background of the controller
    image so this page matches the rest of the site.
 
+   Light theme below, dark theme in .dark_mode. theme.js switches
+   between them.
+
+   LIGHT THEME
    #1a1030   darkest purple    page background, first paragraph text
    #2e1b57   deep purple       banner and headings
    #4a2f80   medium purple     second and third paragraph text
@@ -17,6 +21,19 @@
    #ffffff   white             main page background
    #222222   dark grey         default text
 
+   DARK THEME
+   #05030a   near black        page background
+   #171324   dark plum         main page background
+   #241a3d   dark purple       banner
+   #211c33   dark lilac grey   menu bar and link block backgrounds
+   #221c36   dark block        second paragraph block
+   #8b6fd4   soft purple       outlines
+   #b49bf0   light purple      links
+   #c3b0f0   pale purple       headings
+   #d3c6f2   palest purple     paragraph text
+   #5b4a8a   muted purple      paragraph outlines and lines
+   #e6e1f0   off white         default text
+
    FONTS
    Georgia    headings and the first paragraph
    Verdana    links and the third paragraph
@@ -24,13 +41,48 @@
    Arial      default body text
    ========================================================== */
 
+:root {
+    --page-bg: #1a1030;             /* behind the page */
+    --panel-bg: #ffffff;            /* the page itself */
+    --panel-border: #6d4bc2;        /* outline around the page */
+    --body-text: #222222;           /* default text */
+    --banner-bg: #2e1b57;           /* banner background */
+    --banner-text: #ffffff;         /* banner lettering */
+    --tagline-text: #c9b6f0;        /* slogan under the title */
+    --heading: #2e1b57;             /* section headings */
+    --nav-bg: #efeafc;              /* menu bar and link block */
+    --link: #6d4bc2;                /* link colour */
+    --para-one-text: #1a1030;       /* first paragraph */
+    --para-text: #4a2f80;           /* second and third paragraphs */
+    --para-block: #f3eefc;          /* second paragraph block */
+    --para-outline: #d9d0ee;        /* paragraph outlines and lines */
+}
+
+/* The alternate theme. Same variable names, darker values. */
+.dark_mode {
+    --page-bg: #05030a;             /* behind the page */
+    --panel-bg: #171324;            /* the page itself */
+    --panel-border: #8b6fd4;        /* outline around the page */
+    --body-text: #e6e1f0;           /* default text */
+    --banner-bg: #241a3d;           /* banner background */
+    --banner-text: #f4f1fb;         /* banner lettering */
+    --tagline-text: #b9a6e8;        /* slogan under the title */
+    --heading: #c3b0f0;             /* section headings */
+    --nav-bg: #211c33;              /* menu bar and link block */
+    --link: #b49bf0;                /* link colour */
+    --para-one-text: #d3c6f2;       /* first paragraph */
+    --para-text: #c3b0f0;           /* second and third paragraphs */
+    --para-block: #221c36;          /* second paragraph block */
+    --para-outline: #5b4a8a;        /* paragraph outlines and lines */
+}
+
 
 /* ---------- BODY ---------- */
 body {
-    background-color: #1a1030;      /* page background */
+    background-color: var(--page-bg);  /* page background */
     font-family: Arial;             /* default typeface */
     font-size: 16px;                /* default text size */
-    color: #222222;                 /* default text colour */
+    color: var(--body-text);        /* default text colour */
 }
 
 
@@ -38,16 +90,16 @@ body {
 #container {
     width: 900px;                   /* content width */
     margin: 0 auto;                 /* centres the box */
-    background-color: #ffffff;      /* white page */
+    background-color: var(--panel-bg);   /* page background */
     padding-bottom: 20px;           /* space at the bottom */
-    border: 2px solid #6d4bc2;      /* purple outline */
+    border: 2px solid var(--panel-border);  /* outline */
 }
 
 
 /* ---------- HEADER ---------- */
 #header {
-    background-color: #2e1b57;      /* purple banner */
-    color: #ffffff;                 /* white text */
+    background-color: var(--banner-bg);  /* banner background */
+    color: var(--banner-text);      /* banner lettering */
     padding: 25px;                  /* space inside */
     text-align: center;             /* centred */
 }
@@ -55,20 +107,33 @@ body {
 h1 {
     font-family: Georgia;           /* serif typeface */
     font-size: 38px;                /* largest heading */
-    color: #ffffff;                 /* white on the banner */
+    color: var(--banner-text);      /* lettering on the banner */
 }
 
 #tagline {
     font-style: italic;             /* italic slogan */
     font-size: 17px;                /* small */
-    color: #c9b6f0;                 /* light lilac */
+    color: var(--tagline-text);     /* slogan colour */
 }
 
 h2 {
     font-family: Georgia;           /* serif typeface */
     font-size: 26px;                /* section heading size */
-    color: #2e1b57;                 /* deep purple */
+    color: var(--heading);          /* heading colour */
     margin-top: 20px;               /* space above the heading */
+}
+
+
+/* ---------- THEME BUTTON ---------- */
+#theme_toggler {
+    font-family: Verdana;           /* sans serif typeface */
+    font-size: 13px;                /* small */
+    color: var(--banner-text);      /* matches the banner lettering */
+    background-color: transparent;  /* no fill */
+    border: 2px solid var(--banner-text);  /* outline only */
+    padding: 8px 14px;              /* space inside the button */
+    margin-top: 12px;               /* space above the button */
+    cursor: pointer;                /* arrow turns into a hand */
 }
 
 
@@ -83,9 +148,9 @@ h2 {
 
 #navigation {
     flex: 0 0 200px;                /* fixed 200px column that does not grow or shrink */
-    background-color: #efeafc;      /* pale lilac menu bar */
+    background-color: var(--nav-bg);   /* menu bar background */
     padding: 20px;                  /* space inside */
-    border-right: 2px solid #6d4bc2;   /* line between the two columns */
+    border-right: 2px solid var(--panel-border);   /* line between the two columns */
 }
 
 #content {
@@ -99,7 +164,7 @@ a {
     font-family: Verdana;           /* sans serif typeface */
     font-size: 15px;                /* small */
     font-weight: bold;              /* bold links */
-    color: #6d4bc2;                 /* mid purple */
+    color: var(--link);             /* link colour */
     text-decoration: none;          /* no underline */
     line-height: 2;                 /* space between the stacked links */
 }
@@ -111,7 +176,7 @@ a {
 .about-one {
     font-family: Georgia;           /* serif typeface */
     font-size: 17px;                /* medium text */
-    color: #1a1030;                 /* darkest purple */
+    color: var(--para-one-text);    /* paragraph colour */
     text-align: justify;            /* both edges line up */
 }
 
@@ -119,28 +184,28 @@ a {
     font-family: Tahoma;            /* sans serif typeface */
     font-size: 15px;                /* smaller text */
     font-style: italic;             /* italic */
-    color: #4a2f80;                 /* medium purple */
+    color: var(--para-text);        /* paragraph colour */
     text-align: left;               /* left aligned */
-    background-color: #f3eefc;      /* palest lilac block */
-    border: 2px solid #d9d0ee;      /* pale outline */
+    background-color: var(--para-block);   /* block behind the text */
+    border: 2px solid var(--para-outline); /* outline */
     padding: 14px;                  /* space inside */
 }
 
 .about-three {
     font-family: Verdana;           /* sans serif typeface */
     font-size: 16px;                /* medium text */
-    color: #4a2f80;                 /* medium purple */
+    color: var(--para-text);        /* paragraph colour */
     text-align: center;             /* centred */
-    border-top: 2px solid #d9d0ee;     /* line above */
-    border-bottom: 2px solid #d9d0ee;  /* line below */
+    border-top: 2px solid var(--para-outline);     /* line above */
+    border-bottom: 2px solid var(--para-outline);  /* line below */
     padding: 14px;                  /* space inside */
 }
 
 
 /* ---------- SOCIAL MEDIA LINKS ---------- */
 #social {
-    background-color: #efeafc;      /* pale lilac block */
+    background-color: var(--nav-bg);  /* block behind the link */
     padding: 15px;                  /* space inside */
     margin-bottom: 20px;            /* space below */
-    border: 2px solid #6d4bc2;      /* purple outline */
+    border: 2px solid var(--panel-border);  /* outline */
 }
